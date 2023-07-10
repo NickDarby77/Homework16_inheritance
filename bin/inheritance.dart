@@ -1,5 +1,7 @@
 // HomeWork - extends - Inheritance
 
+import 'dart:math';
+
 void main() {
   Manager marat = Manager(bonus: 40, name: 'Marat', salary: 260);
   Manager muha = Manager(bonus: 45, name: 'Muha', salary: 275);
@@ -11,10 +13,15 @@ void main() {
   List<Employee> employees = [marat, samat, muha, talgat];
   Employee.getTotalSalary(employees);
   print('--------');
-  Rectangle one = Rectangle(length: 5, width: 6);
-  Circle two = Circle(radius: 5);
+  // Rectangle one = Rectangle(length: 5, width: 6);
+  // Circle two = Circle(radius: 5);
 
-  List<Shape> shapes = [one, two];
+  List<Shape> shapes = [
+    Rectangle(length: 5, width: 6),
+    Circle(radius: 5),
+    Rectangle(length: 6, width: 7),
+    Circle(radius: 6),
+  ];
   Shape.getTotalArea(shapes);
   print('--------');
   SavingsAccount a = SavingsAccount(20, 'USD', 500);
@@ -63,7 +70,7 @@ class Developer extends Employee {
 
 // 2nd question
 abstract class Shape {
-  calculateArea() {}
+  double calculateArea();
 
   static getTotalArea(List<Shape> shapes) {
     double sum = 0;
@@ -80,18 +87,18 @@ class Rectangle extends Shape {
   Rectangle({required this.length, required this.width});
 
   @override
-  calculateArea() {
+  double calculateArea() {
     return length * width;
   }
 }
 
 class Circle extends Shape {
   double radius;
-  double pi = 3.14;
+  // double pi = 3.14;
   Circle({required this.radius});
 
   @override
-  calculateArea() {
+  double calculateArea() {
     return pi * (radius * radius); // (A = π r²),  3.14 = π
   }
 }
